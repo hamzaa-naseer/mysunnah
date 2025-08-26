@@ -6,6 +6,7 @@ import { Router } from 'next/router'
 import NProgress from 'nprogress'
 import InspectElement from 'src/components/InspectElement/InspectElement'
 import Routes from 'src/components/ZoneGuard/Routes'
+import StripeProvider from 'src/components/StripePayment/StripeProvider'
 import language from 'src/utils/language'
 import { I18nextProvider } from 'react-i18next'
 
@@ -16,11 +17,12 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import 'react-tooltip/dist/react-tooltip.css'
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/style.css'
+import './profile/wallet/wallet-elite.css'
 
 
 // ** Configure JSS & ClassName
 const App = ({ Component, pageProps }) => {
-  // console.log(getLayout) 
+  // console.log(getLayout)
   Router.events.on('routeChangeStart', () => {
     NProgress.start()
   })
@@ -34,15 +36,17 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <Provider store={store}>
+      <StripeProvider>
         <I18nextProvider i18n={language}>
           <Toaster position='top-center' containerClassName='toast-custom' />
           <InspectElement>
-         
+
             <Routes>
               <Component {...pageProps} />
             </Routes>
           </InspectElement>
         </I18nextProvider>
+      </StripeProvider>
     </Provider>
   )
 }

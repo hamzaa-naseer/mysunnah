@@ -17,6 +17,18 @@ import LeftTabProfile from 'src/components/Profile/LeftTabProfile'
 import paypal from 'src/assets/images/Paypal.svg'
 import paytm from 'src/assets/images/Paytm.svg'
 import stripe from 'src/assets/images/Stripe.svg'
+import dynamic from 'next/dynamic'
+import './wallet.module.css'
+
+// Dynamic imports for Stripe components to avoid SSR issues
+const StripePayment = dynamic(() => import('src/components/StripePayment/StripePayment'), {
+  ssr: false,
+  loading: () => <div>Loading...</div>
+})
+const StripeTransactionHistory = dynamic(() => import('src/components/StripePayment/StripeTransactionHistory'), {
+  ssr: false,
+  loading: () => <div>Loading...</div>
+})
 
 
 
@@ -42,6 +54,10 @@ const Wallet = () => {
 
   const [paytmOptions, setPaytmOptions] = useState({ name: '', placeholder: '' })
 
+  // Stripe payment states
+  const [showStripePayment, setShowStripePayment] = useState(false)
+  const [showStripeHistory, setShowStripeHistory] = useState(false)
+
   const systemconfig = useSelector(sysConfigdata)
 
   // per coin
@@ -64,9 +80,9 @@ const Wallet = () => {
 
   // payment option icon, name and placeholder
   const paymentIcones = [
-    { src: paypal, name: 'paypal' , placeholder: 'enter paypalid'},
-    { src: paytm, name: 'paytm' ,placeholder : 'enter mobilenumber'},
-    { src: stripe, name: 'stripe',placeholder: 'enter upi id' },
+    { src: paypal, name: 'paypal', placeholder: 'enter paypalid' },
+    { src: paytm, name: 'paytm', placeholder: 'enter mobilenumber' },
+    { src: stripe, name: 'stripe', placeholder: 'enter upi id' },
   ];
 
   // user coins
@@ -116,15 +132,15 @@ const Wallet = () => {
   const paymentModal = (e, type) => {
     e.preventDefault()
     if (type === paymentIcones[0].name) {
-      setPaytmOptions({ name: paymentIcones[0].name, placeholder:  paymentIcones[0].placeholder, })
+      setPaytmOptions({ name: paymentIcones[0].name, placeholder: paymentIcones[0].placeholder, })
       setPaymentIdModal(true)
       setModal(false)
     } else if (type === paymentIcones[1].name) {
-      setPaytmOptions({ name: paymentIcones[1].name, placeholder:  paymentIcones[1].placeholder, })
+      setPaytmOptions({ name: paymentIcones[1].name, placeholder: paymentIcones[1].placeholder, })
       setPaymentIdModal(true)
       setModal(false)
     } else if (type === paymentIcones[2].name) {
-      setPaytmOptions({ name: paymentIcones[2].name, placeholder:  paymentIcones[2].placeholder, })
+      setPaytmOptions({ name: paymentIcones[2].name, placeholder: paymentIcones[2].placeholder, })
       setPaymentIdModal(true)
       setModal(false)
     }
@@ -333,44 +349,97 @@ const Wallet = () => {
               <div className='contentDiv col-xl-9 col-lg-4 col-md-12 col-12 pt-2'>
                 <div className='row morphisam card'>
                   <div className='col-md-12 col-12 walletContentWrapper'>
-                    <div className='request_data pt-3'>
+                    {/* Header with Total Coins */}
+                    <div className='wallet-header'>
                       <h2 className='headline'>{t('request_payment')}</h2>
-                      <div className="requestDataWrapper">
-
-                        <div className="totCoinsDiv">
-                          <span>{`${t('total')} ${t('coins')} `}</span>
-                          <span className='coins'>
-                            <img className='me-1' src={coinimg.src} alt='coin' />
-                            {usercoins}</span>
-                        </div>
-                        <div className="reedembleAmtDiv">
-                          <span>{`${t('redeemable_amount')}${currency_symbol}`}</span>
-                          <span> <input
-                            type='number'
-                            className='price'
-                            defaultValue={`${walletvalue}`}
-                            onChange={event => handleInputchange(event)}
-                            min={0}
-                          /></span>
-                        </div>
-                        <div className="reedemBtnDiv">
-                          <button className='btn btn-primary' onClick={e => redeemNow(e)}>
-                            {t('redeem_now')}
-                          </button>
+                      <div className="total-coins-display">
+                        <span className="total-label">{`${t('total')} ${t('coins')}`}</span>
+                        <div className='coins-value'>
+                          <img className='coin-icon' src={coinimg.src} alt='coin' />
+                          <span className="coins-count">{usercoins}</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="notesDiv">
-                      <p className='notes'>{t('notes')} :</p>
-                      <ul>
-                        <li className='notes_data'>{t('payout_days')}</li>
-                        <li className='notes_data'>{`${t("minimum_redeemable_amount")} ${currency_symbol}${minimumValue()}`}</li>
+                    {/* Buy Coins Section - Elite Quiz Style */}
+                    <div className="buy-coins-section">
+                      <h3 className='section-title'>{t('buy_coins')}</h3>
+
+                      {/* Stripe Payment Card */}
+                      <div className="stripe-payment-card">
+                        <div className="stripe-header">
+                          <div className="stripe-logo-container">
+                            <img src={stripe.src} alt="stripe" className="stripe-logo" />
+                            <div className="stripe-brand-text">
+                              <h4>Stripe</h4>
+                              <p>{t('secure_payment_processing')}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="stripe-content">
+                          <div className="pricing-info">
+                            <div className="exchange-rate">
+                              <span className="rate-text">10 Coins = £1.00</span>
+                              <span className="currency-text">British Pounds (GBP)</span>
+                            </div>
+                          </div>
+
+                          <div className="stripe-actions">
+                            <button
+                              className='btn btn-stripe-buy'
+                              onClick={() => setShowStripePayment(true)}
+                            >
+                              <span className="btn-icon">💳</span>
+                              {t('buy_with_stripe')}
+                            </button>
+
+                            <button
+                              className='btn btn-stripe-history'
+                              onClick={() => setShowStripeHistory(true)}
+                            >
+                              <span className="btn-icon">📊</span>
+                              {t('view_stripe_history')}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Traditional Redeem Section */}
+                      <div className="redeem-section">
+                        <div className="redeem-header">
+                          <h4>{t('redeem_coins')}</h4>
+                          <div className="redeem-amount-input">
+                            <span className="currency-symbol">{currency_symbol}</span>
+                            <input
+                              type='number'
+                              className='amount-input'
+                              value={redeemInput}
+                              onChange={event => handleInputchange(event)}
+                              min={minimumValue()}
+                              step="0.01"
+                              placeholder={`Min ${currency_symbol}${minimumValue()}`}
+                            />
+                          </div>
+                        </div>
+                        <button className='btn btn-primary redeem-btn' onClick={e => redeemNow(e)}>
+                          {t('redeem_now')}
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Notes Section */}
+                    <div className="notes-section">
+                      <p className='notes-title'>{t('notes')}:</p>
+                      <ul className="notes-list">
+                        <li className='notes-item'>{t('payout_days')}</li>
+                        <li className='notes-item'>{`${t("minimum_redeemable_amount")} ${currency_symbol}${minimumValue()}`}</li>
                       </ul>
                     </div>
-                    {/* {paymentData?.length > 0 ? ( */}
-                    <div className="transactionDiv">
-                      <h2 className='headline'>{t('transaction')}</h2>
+
+                    {/* Transaction History */}
+                    <div className="transaction-section">
+                      <h2 className='section-title'>{t('transaction')}</h2>
                       {loading ? (
                         <div className='text-center'>
                           <Skeleton count={5} />
@@ -382,7 +451,7 @@ const Wallet = () => {
                             activeKey={activeTab}
                             onSelect={key => setActiveTab(key)}
                             fill
-                            className='mb-3'
+                            className='wallet-tabs'
                           >
                             <Tab eventKey='all' title={t('all')}>
                               {renderDataByStatus('2')}
@@ -391,18 +460,18 @@ const Wallet = () => {
                               {renderDataByStatus('1')}
                             </Tab>
                             <Tab eventKey='pending' title={t('pending')}>
-
                               {renderDataByStatus('0')}
-                              {pendingData && pendingData.length > 0 ? <button className='delete-request btn btn-danger' onClick={() => deleteRequest(paymentData[0].id)}>{t("delete_request")}</button> : null}
-
+                              {pendingData && pendingData.length > 0 ?
+                                <button className='delete-request btn btn-danger' onClick={() => deleteRequest(paymentData[0].id)}>
+                                  {t("delete_request")}
+                                </button>
+                                : null
+                              }
                             </Tab>
-
                           </Tabs>
                         </>
                       )}
                     </div>
-
-
                   </div>
                 </div>
               </div>
@@ -413,7 +482,7 @@ const Wallet = () => {
 
       {/* payment icon payout modal */}
       <Modal
-      className='payment_modal'
+        className='payment_modal'
         maskClosable={false}
         title={t('wallet')}
         centered
@@ -435,15 +504,15 @@ const Wallet = () => {
         <hr className='hr' />
         <p>{t('select_payout_option')}</p>
         <ul className='payment_icon ps-0'>
-        {paymentIcones.map((icon)=>{
-          return(
-          <li onClick={e => paymentModal(e, icon.name)}>
-            <i >
-              <img src={icon.src.src} alt={icon} />
-            </i>
-          </li>
-          )
-        })}
+          {paymentIcones.map((icon) => {
+            return (
+              <li onClick={e => paymentModal(e, icon.name)}>
+                <i >
+                  <img src={icon.src.src} alt={icon} />
+                </i>
+              </li>
+            )
+          })}
         </ul>
       </Modal>
 
@@ -476,6 +545,18 @@ const Wallet = () => {
           </button>
         </div>
       </Modal>
+
+      {/* Stripe Payment Modal */}
+      <StripePayment
+        isOpen={showStripePayment}
+        onClose={() => setShowStripePayment(false)}
+      />
+
+      {/* Stripe Transaction History Modal */}
+      <StripeTransactionHistory
+        isOpen={showStripeHistory}
+        onClose={() => setShowStripeHistory(false)}
+      />
     </Layout>
   )
 }

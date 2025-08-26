@@ -43,7 +43,12 @@ import {
   setUserStatisticsApi,
   unlockPremiumCategoriesApi,
   deletePendingPayemntApi,
-  getHomeWebSettingsApi
+  getHomeWebSettingsApi,
+  createStripePaymentIntentApi,
+  confirmStripePaymentApi,
+  getStripeCoinPackagesApi,
+  getStripeTransactionHistoryApi,
+  getStripeSettingsApi
 } from 'src/utils/api'
 import { apiCallBegan } from './apiActions'
 import { store } from '../store'
@@ -843,6 +848,94 @@ export const deletependingPayemntApi = ({
   store.dispatch(
     apiCallBegan({
       ...deletePendingPayemntApi(payment_id),
+      displayToast: false,
+      onStart,
+      onSuccess,
+      onError
+    })
+  )
+}
+
+// create stripe payment intent
+export const createStripePaymentIntent = ({
+  amount = '',
+  coins = '',
+  onSuccess = () => {},
+  onError = () => {},
+  onStart = () => {}
+}) => {
+  store.dispatch(
+    apiCallBegan({
+      ...createStripePaymentIntentApi(amount, coins),
+      displayToast: false,
+      onStart,
+      onSuccess,
+      onError
+    })
+  )
+}
+
+// confirm stripe payment
+export const confirmStripePayment = ({
+  payment_intent_id = '',
+  onSuccess = () => {},
+  onError = () => {},
+  onStart = () => {}
+}) => {
+  store.dispatch(
+    apiCallBegan({
+      ...confirmStripePaymentApi(payment_intent_id),
+      displayToast: false,
+      onStart,
+      onSuccess,
+      onError
+    })
+  )
+}
+
+// get stripe coin packages
+export const getStripeCoinPackages = ({
+  onSuccess = () => {},
+  onError = () => {},
+  onStart = () => {}
+}) => {
+  store.dispatch(
+    apiCallBegan({
+      ...getStripeCoinPackagesApi(),
+      displayToast: false,
+      onStart,
+      onSuccess,
+      onError
+    })
+  )
+}
+
+// get stripe transaction history
+export const getStripeTransactionHistory = ({
+  onSuccess = () => {},
+  onError = () => {},
+  onStart = () => {}
+}) => {
+  store.dispatch(
+    apiCallBegan({
+      ...getStripeTransactionHistoryApi(),
+      displayToast: false,
+      onStart,
+      onSuccess,
+      onError
+    })
+  )
+}
+
+// get stripe settings
+export const getStripeSettings = ({
+  onSuccess = () => {},
+  onError = () => {},
+  onStart = () => {}
+}) => {
+  store.dispatch(
+    apiCallBegan({
+      ...getStripeSettingsApi(),
       displayToast: false,
       onStart,
       onSuccess,

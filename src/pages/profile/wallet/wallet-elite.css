@@ -1,0 +1,1826 @@
+/* MySunnah Theme Color Variables */
+:root {
+  --mysunnah-primary: #ef5388;
+  --mysunnah-primary-dark: #d63384;
+  --mysunnah-primary-darker: #c2185b;
+  --mysunnah-primary-light: rgba(239, 83, 136, 0.1);
+  --mysunnah-primary-border: rgba(239, 83, 136, 0.2);
+}
+
+/* Elite Quiz Wallet Page Styles - MySunnah Theme */
+
+.walletContentWrapper {
+  padding: 2rem;
+  background: linear-gradient(135deg, #ef5388 0%, #d63384 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.walletContentWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>') repeat;
+  pointer-events: none;
+}
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.wallet-header .headline {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #fff, #f8f9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.total-coins-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.total-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.coins-value {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coin-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.coins-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Buy Coins Section - Elite Quiz Style */
+.buy-coins-section {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.stripe-payment-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.stripe-payment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+}
+
+.stripe-header {
+  margin-bottom: 1.5rem;
+}
+
+.stripe-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stripe-logo {
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.stripe-brand-text h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ef5388;
+}
+
+.stripe-brand-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.stripe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pricing-info {
+  background: linear-gradient(135deg, #fef7f7, #fce8ec);
+  padding: 1rem;
+  border-radius: 12px;
+  border-left: 4px solid #ef5388;
+}
+
+.exchange-rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.rate-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ef5388;
+}
+
+.currency-text {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+.stripe-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-stripe-buy {
+  background: linear-gradient(135deg, #ef5388, #d63384);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(239, 83, 136, 0.3);
+  flex: 1;
+  justify-content: center;
+  min-width: 200px;
+}
+
+.btn-stripe-buy:hover {
+  background: linear-gradient(135deg, #d63384, #c2185b);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 83, 136, 0.4);
+}
+
+.btn-stripe-history {
+  background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+  color: #635bff;
+  border: 2px solid #635bff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  flex: 1;
+  justify-content: center;
+  min-width: 200px;
+}
+
+.btn-stripe-history:hover {
+  background: linear-gradient(135deg, #635bff, #4f46e5);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 91, 255, 0.3);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+/* Redeem Section */
+.redeem-section {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 1.5rem;
+  color: #333;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.redeem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.redeem-header h4 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.redeem-amount-input {
+  display: flex;
+  align-items: center;
+  background: #f8f9ff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.redeem-amount-input:focus-within {
+  border-color: #ef5388;
+  box-shadow: 0 0 0 3px rgba(239, 83, 136, 0.1);
+}
+
+.currency-symbol {
+  background: #ef5388;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.amount-input {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  width: 120px;
+  color: #333;
+}
+
+.amount-input::placeholder {
+  color: #9ca3af;
+}
+
+.redeem-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  width: 100%;
+}
+
+.redeem-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+/* Notes Section */
+.notes-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+.notes-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notes-item {
+  padding: 0.3rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.notes-item::before {
+  content: '•';
+  color: #10b981;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Transaction Section */
+.transaction-section {
+  position: relative;
+  z-index: 1;
+}
+
+.wallet-tabs {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.wallet-tabs .nav-tabs {
+  border-bottom: none;
+  background: transparent;
+}
+
+.wallet-tabs .nav-link {
+  color: #666;
+  border: none;
+  border-radius: 0;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.wallet-tabs .nav-link.active {
+  background: linear-gradient(135deg, #ef5388, #d63384);
+  color: white;
+  border: none;
+}
+
+.wallet-tabs .nav-link:hover {
+  background: rgba(239, 83, 136, 0.1);
+  color: #ef5388;
+  border: none;
+}
+
+.wallet-tabs .tab-content {
+  padding: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .walletContentWrapper {
+    padding: 1rem;
+  }
+
+  .wallet-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .wallet-header .headline {
+    font-size: 2rem;
+  }
+
+  .stripe-actions {
+    flex-direction: column;
+  }
+
+  .redeem-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exchange-rate {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .stripe-payment-card {
+    padding: 1rem;
+  }
+
+  .stripe-logo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn-stripe-buy,
+  .btn-stripe-history {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* Professional Stripe Payment Modal Styles - MySunnah Theme */
+.stripe-modal .ant-modal-content {
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.stripe-modal .ant-modal-header {
+  background: linear-gradient(135deg, #ef5388 0%, #d63384 100%);
+  border-bottom: none;
+  padding: 24px 32px;
+  border-radius: 16px 16px 0 0;
+}
+
+.stripe-modal .ant-modal-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stripe-modal .ant-modal-title i {
+  font-size: 24px;
+  color: #ffd700;
+}
+
+.stripe-modal .ant-modal-close {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  top: 24px;
+  right: 32px;
+}
+
+.stripe-modal .ant-modal-close:hover {
+  color: #ffffff;
+}
+
+.stripe-modal .ant-modal-body {
+  padding: 0;
+  background: #ffffff;
+}
+
+/* Modal Header with MySunnah Theme */
+.stripe-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stripe-logo-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stripe-header-logo {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+}
+
+.stripe-icon {
+  font-size: 28px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.secure-badge i {
+  font-size: 14px;
+}
+
+/* Professional Payment Form */
+.professional-payment-form {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.payment-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.selected-package-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.package-info h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.package-info p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.payment-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.summary-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.coins-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coin-icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.coins-value {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.total-row {
+  padding-top: 8px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.total-amount {
+  color: #059669;
+  font-size: 18px;
+}
+
+/* Professional Form Styling */
+.professional-form {
+  padding: 32px;
+}
+
+.form-section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.section-title i {
+  color: #ef5388;
+  font-size: 18px;
+}
+
+.card-input-wrapper {
+  margin-bottom: 24px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.professional-card-input {
+  position: relative;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.professional-card-input:hover {
+  border-color: #d1d5db;
+}
+
+.professional-card-input:focus-within {
+  border-color: #ef5388;
+  box-shadow: 0 0 0 3px rgba(239, 83, 136, 0.1);
+}
+
+.card-element-inner {
+  min-height: 24px;
+}
+
+.card-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.card-icons i {
+  font-size: 20px;
+  color: #9ca3af;
+}
+
+.security-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #10b981;
+}
+
+.security-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.security-item i {
+  color: #10b981;
+  font-size: 14px;
+}
+
+/* Payment Actions */
+.payment-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background: #f8fafc;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.btn-pay {
+  background: linear-gradient(135deg, #ef5388 0%, #d63384 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(239, 83, 136, 0.4);
+}
+
+.btn-pay:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 83, 136, 0.5);
+}
+
+.btn-pay:active:not(:disabled) {
+  transform: translateY(0px);
+}
+
+.payment-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.payment-status.preparing {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.payment-status i {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Payment Footer */
+.payment-footer {
+  padding: 24px 32px;
+  background: #f8fafc;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.refund-policy {
+  margin: 0;
+}
+
+.refund-policy p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.refund-policy i {
+  color: #3b82f6;
+  font-size: 14px;
+}
+
+/* Responsive Design for Payment Modal */
+@media (max-width: 768px) {
+
+  .stripe-modal .ant-modal-header,
+  .payment-header,
+  .professional-form,
+  .payment-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .selected-package-summary {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .payment-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    flex: none;
+  }
+}
+
+/* Font Awesome Icon Enhancements - Multiple fallbacks */
+.fas,
+.fab,
+.far,
+.fal,
+.fad,
+.fa {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Pro", "FontAwesome" !important;
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+
+.fab {
+  font-weight: 400;
+  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", "FontAwesome" !important;
+}
+
+.far {
+  font-weight: 400;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+}
+
+/* Ensure icons display correctly with fallbacks */
+[class^="fa-"],
+[class*=" fa-"] {
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  /* Fallback for when Font Awesome doesn't load */
+  position: relative;
+}
+
+/* Unicode fallbacks for common icons */
+.fa-shield-alt:before,
+.fa-shield:before {
+  content: "\f3ed";
+  /* Fallback to Unicode shield */
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-shield-alt:after,
+.fa-shield:after {
+  content: "🛡️";
+  position: absolute;
+  font-family: system-ui, -apple-system, "Segoe UI Emoji", sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-credit-card:before {
+  content: "\f09d";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-credit-card:after {
+  content: "💳";
+  position: absolute;
+  font-family: system-ui, -apple-system, "Segoe UI Emoji", sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-lock:before {
+  content: "\f023";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-lock:after {
+  content: "🔒";
+  position: absolute;
+  font-family: system-ui, -apple-system, "Segoe UI Emoji", sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-bolt:before {
+  content: "\f0e7";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-bolt:after {
+  content: "⚡";
+  position: absolute;
+  font-family: system-ui, -apple-system, "Segoe UI Emoji", sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-star:before {
+  content: "\f005";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-star:after {
+  content: "⭐";
+  position: absolute;
+  font-family: system-ui, -apple-system, "Segoe UI Emoji", sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-arrow-right:before {
+  content: "\f061";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-arrow-right:after {
+  content: "→";
+  position: absolute;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-arrow-left:before {
+  content: "\f060";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-arrow-left:after {
+  content: "←";
+  position: absolute;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-info-circle:before {
+  content: "\f05a";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-info-circle:after {
+  content: "ℹ️";
+  position: absolute;
+  font-family: system-ui, -apple-system, "Segoe UI Emoji", sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+.fa-hourglass-half:before {
+  content: "\f252";
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-hourglass-half:after {
+  content: "⏳";
+  position: absolute;
+  font-family: system-ui, -apple-system, "Segoe UI Emoji", sans-serif;
+  font-size: inherit;
+  left: 0;
+  z-index: -1;
+}
+
+/* Credit Card Icons with fallbacks */
+.fa-cc-visa:before {
+  content: "\f1f0";
+  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-cc-visa:after {
+  content: "VISA";
+  position: absolute;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  left: 0;
+  z-index: -1;
+  color: #1a1f71;
+}
+
+.fa-cc-mastercard:before {
+  content: "\f1f1";
+  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-cc-mastercard:after {
+  content: "MC";
+  position: absolute;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  left: 0;
+  z-index: -1;
+  color: #eb001b;
+}
+
+.fa-cc-amex:before {
+  content: "\f1f3";
+  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-cc-amex:after {
+  content: "AMEX";
+  position: absolute;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  left: 0;
+  z-index: -1;
+  color: #006fcf;
+}
+
+.fa-cc-discover:before {
+  content: "\f1f2";
+  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", Arial Unicode MS, sans-serif !important;
+}
+
+.fa-cc-discover:after {
+  content: "DISC";
+  position: absolute;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  left: 0;
+  z-index: -1;
+  color: #ff6000;
+}
+
+/* Icon Enhancements with visible fallbacks */
+.feature-item i.fas.fa-bolt {
+  color: #f59e0b;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* If Font Awesome fails, show emoji */
+.feature-item i.fas.fa-bolt:empty:after,
+.feature-item i.fas.fa-bolt:not([class*="fa-"]):after {
+  content: "⚡";
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #f59e0b;
+}
+
+.feature-item i.fas.fa-shield-alt {
+  color: #10b981;
+  min-width: 20px;
+  text-align: center;
+}
+
+.feature-item i.fas.fa-shield-alt:empty:after,
+.feature-item i.fas.fa-shield-alt:not([class*="fa-"]):after {
+  content: "🛡️";
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #10b981;
+}
+
+.feature-item i.fas.fa-star {
+  color: #f59e0b;
+  min-width: 20px;
+  text-align: center;
+}
+
+.feature-item i.fas.fa-star:empty:after,
+.feature-item i.fas.fa-star:not([class*="fa-"]):after {
+  content: "⭐";
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #f59e0b;
+}
+
+/* Credit Card Icons with better fallbacks */
+.card-icons i.fab.fa-cc-visa {
+  color: #1a1f71;
+  min-width: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+.card-icons i.fab.fa-cc-visa:empty:after,
+.card-icons i.fab.fa-cc-visa:not([class*="fa-"]):after {
+  content: "VISA";
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #1a1f71;
+}
+
+.card-icons i.fab.fa-cc-mastercard {
+  color: #eb001b;
+  min-width: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+.card-icons i.fab.fa-cc-mastercard:empty:after,
+.card-icons i.fab.fa-cc-mastercard:not([class*="fa-"]):after {
+  content: "MC";
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #eb001b;
+}
+
+.card-icons i.fab.fa-cc-amex {
+  color: #006fcf;
+  min-width: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+.card-icons i.fab.fa-cc-amex:empty:after,
+.card-icons i.fab.fa-cc-amex:not([class*="fa-"]):after {
+  content: "AMEX";
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  color: #006fcf;
+}
+
+.card-icons i.fab.fa-cc-discover {
+  color: #ff6000;
+  min-width: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+.card-icons i.fab.fa-cc-discover:empty:after,
+.card-icons i.fab.fa-cc-discover:not([class*="fa-"]):after {
+  content: "DISC";
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  color: #ff6000;
+}
+
+/* Button Icons with fallbacks */
+.btn i.fa-arrow-right {
+  min-width: 16px;
+  text-align: center;
+}
+
+.btn i.fa-arrow-right:empty:after,
+.btn i.fa-arrow-right:not([class*="fa-"]):after {
+  content: "→";
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.btn i.fa-arrow-left {
+  min-width: 16px;
+  text-align: center;
+}
+
+.btn i.fa-arrow-left:empty:after,
+.btn i.fa-arrow-left:not([class*="fa-"]):after {
+  content: "←";
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.btn i.fa-credit-card {
+  min-width: 16px;
+  text-align: center;
+}
+
+.btn i.fa-credit-card:empty:after,
+.btn i.fa-credit-card:not([class*="fa-"]):after {
+  content: "💳";
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.btn i.fa-lock {
+  min-width: 16px;
+  text-align: center;
+}
+
+.btn i.fa-lock:empty:after,
+.btn i.fa-lock:not([class*="fa-"]):after {
+  content: "🔒";
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.btn i.fa-hourglass-half {
+  min-width: 16px;
+  text-align: center;
+}
+
+.btn i.fa-hourglass-half:empty:after,
+.btn i.fa-hourglass-half:not([class*="fa-"]):after {
+  content: "⏳";
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.btn i.fa-info-circle {
+  min-width: 16px;
+  text-align: center;
+}
+
+.btn i.fa-info-circle:empty:after,
+.btn i.fa-info-circle:not([class*="fa-"]):after {
+  content: "ℹ️";
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Button Icons */
+.btn i {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover i.fa-arrow-right {
+  transform: translateX(4px);
+}
+
+.btn:hover i.fa-arrow-left {
+  transform: translateX(-4px);
+}
+
+.StripeElement {
+  padding: 0;
+  color: #32325d;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.StripeElement--focus {
+  outline: none;
+}
+
+.StripeElement--invalid {
+  color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+/* Professional Stripe Packages Layout */
+.coin-packages.professional-layout {
+  padding: 0;
+  background: #ffffff;
+}
+
+.packages-intro {
+  text-align: center;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.packages-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 12px 0;
+}
+
+.packages-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.exchange-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.exchange-rate-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 83, 136, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(239, 83, 136, 0.2);
+}
+
+.rate-highlight {
+  font-weight: 600;
+  color: #ef5388;
+}
+
+.rate-value {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.currency-info {
+  font-size: 14px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Professional Packages Grid */
+.packages-grid.professional-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 32px;
+  background: #ffffff;
+}
+
+.package-card.professional-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.package-card.professional-card:hover {
+  border-color: #ef5388;
+  box-shadow: 0 12px 28px rgba(239, 83, 136, 0.15);
+  transform: translateY(-4px);
+}
+
+.package-card.popular-package {
+  border-color: #f59e0b;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.2);
+}
+
+.package-card.recommended {
+  border-color: #10b981;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.2);
+}
+
+/* Package Badges */
+.popular-badge {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 0 0 12px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.recommended-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+/* Package Header */
+.package-header.professional-header {
+  text-align: center;
+  padding: 32px 24px 16px 24px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.package-header.professional-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.package-subtitle {
+  font-size: 14px;
+  color: #ef5388;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Package Body */
+.package-body.professional-body {
+  padding: 24px;
+  text-align: center;
+}
+
+.coins-display-main {
+  margin-bottom: 20px;
+}
+
+.coins-amount-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.coin-icon-large {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 4px 6px rgba(245, 158, 11, 0.3));
+}
+
+.coin-count {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1;
+}
+
+.coin-label {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Price Section */
+.price-section {
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(239, 83, 136, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(239, 83, 136, 0.1);
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.currency {
+  font-size: 20px;
+  font-weight: 600;
+  color: #059669;
+}
+
+.amount {
+  font-size: 32px;
+  font-weight: 800;
+  color: #059669;
+}
+
+.price-per-coin {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Package Description */
+.package-description {
+  font-size: 14px;
+  color: #64748b;
+  margin: 16px 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Package Features */
+.package-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.feature-item i {
+  color: #10b981;
+  font-size: 14px;
+}
+
+.feature-item.value-badge i {
+  color: #f59e0b;
+}
+
+/* Package Footer */
+.package-footer.professional-footer {
+  padding: 20px 24px 24px 24px;
+}
+
+.btn-stripe-select {
+  width: 100%;
+  background: linear-gradient(135deg, #ef5388 0%, #d63384 100%);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(239, 83, 136, 0.4);
+}
+
+.btn-stripe-select:hover {
+  background: linear-gradient(135deg, #d63384 0%, #c2185b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 83, 136, 0.5);
+}
+
+.btn-stripe-select i {
+  transition: transform 0.3s ease;
+}
+
+.btn-stripe-select:hover i {
+  transform: translateX(4px);
+}
+
+/* Payment Security Section */
+.payment-security-info {
+  padding: 24px 32px;
+  background: #f8fafc;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.security-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.security-badges .security-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.security-badges .security-item i {
+  font-size: 16px;
+}
+
+.security-badges .security-item:first-child i.fab.fa-stripe-s {
+  color: #ef5388;
+  font-weight: bold;
+}
+
+.security-badges .security-item:nth-child(2) i.fas.fa-lock {
+  color: #10b981;
+}
+
+.security-badges .security-item:nth-child(3) i.fas.fa-shield-alt {
+  color: #059669;
+}
+
+/* Test Mode Notice */
+.test-mode-info {
+  text-align: center;
+}
+
+.test-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #64748b;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  margin: 0;
+}
+
+.test-notice i {
+  color: #3b82f6;
+  font-size: 14px;
+}
+
+.test-notice strong {
+  color: #1e293b;
+}
+
+/* Loading Animations */
+.loading-state {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.loading-text {
+  margin: 16px 0;
+  font-size: 16px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.loading-state .ant-spin {
+  color: var(--mysunnah-primary);
+}
+
+/* Pulse Animation for Better UX */
+@keyframes mysunnah-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.package-card.professional-card:hover {
+  border-color: var(--mysunnah-primary);
+  box-shadow: 0 12px 28px var(--mysunnah-primary-light);
+  transform: translateY(-4px);
+  animation: mysunnah-pulse 2s ease-in-out infinite;
+}
+
+/* Hover States for Better Interaction */
+.btn-stripe-select:hover {
+  animation: mysunnah-pulse 1.5s ease-in-out infinite;
+}
+
+/* Focus States for Accessibility */
+.professional-card-input:focus-within,
+.redeem-amount-input:focus-within {
+  border-color: var(--mysunnah-primary);
+  box-shadow: 0 0 0 3px var(--mysunnah-primary-light);
+  outline: none;
+}
+
+/* Modal Responsive Design */
+@media (max-width: 768px) {
+  .packages-grid.professional-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .packages-intro {
+    padding: 20px;
+  }
+
+  .exchange-info {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .security-badges {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .coin-count {
+    font-size: 28px;
+  }
+
+  .amount {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .package-card.professional-card {
+    margin: 0 10px;
+  }
+
+  .packages-title {
+    font-size: 20px;
+  }
+
+  .packages-subtitle {
+    font-size: 14px;
+  }
+}
+
+/* Complete fallback when Font Awesome fails to load */
+.fa-fallback .fas,
+.fa-fallback .fab,
+.fa-fallback .far,
+.fa-fallback [class^="fa-"],
+.fa-fallback [class*=" fa-"] {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  font-weight: normal !important;
+}
+
+.fa-fallback .fa-shield-alt:before,
+.fa-fallback .fa-shield:before {
+  content: "🛡️";
+}
+
+.fa-fallback .fa-credit-card:before {
+  content: "💳";
+}
+
+.fa-fallback .fa-lock:before {
+  content: "🔒";
+}
+
+.fa-fallback .fa-bolt:before {
+  content: "⚡";
+}
+
+.fa-fallback .fa-star:before {
+  content: "⭐";
+}
+
+.fa-fallback .fa-arrow-right:before {
+  content: "→";
+}
+
+.fa-fallback .fa-arrow-left:before {
+  content: "←";
+}
+
+.fa-fallback .fa-info-circle:before {
+  content: "ℹ️";
+}
+
+.fa-fallback .fa-hourglass-half:before {
+  content: "⏳";
+}
+
+.fa-fallback .fa-cc-visa:before {
+  content: "VISA";
+  font-size: 10px;
+  font-weight: bold;
+  color: #1a1f71;
+}
+
+.fa-fallback .fa-cc-mastercard:before {
+  content: "MC";
+  font-size: 10px;
+  font-weight: bold;
+  color: #eb001b;
+}
+
+.fa-fallback .fa-cc-amex:before {
+  content: "AMEX";
+  font-size: 8px;
+  font-weight: bold;
+  color: #006fcf;
+}
+
+.fa-fallback .fa-cc-discover:before {
+  content: "DISC";
+  font-size: 8px;
+  font-weight: bold;
+  color: #ff6000;
+}

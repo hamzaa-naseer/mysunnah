@@ -11,6 +11,7 @@ import badgeReducer from './reducers/badgesSlice'
 import webSettingsReducer from './reducers/webSettings'
 import homeReducer from './reducers/homeSlice'
 import notificationReducer from './reducers/notificationSlice'
+import stripeReducer from './reducers/stripeSlice'
 import api from '../store/middleware/api'
 import userCoinsSlice from './reducers/userCoinsSlice'
 import showSeconds from './reducers/showRemainingSeconds'
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   WebSettings: webSettingsReducer,
   Home: homeReducer,
   Notification: notificationReducer,
+  Stripe: stripeReducer,
   UserCoins: userCoinsSlice,
   showSeconds:showSeconds,
   message:messageSlice,
