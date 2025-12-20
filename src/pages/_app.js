@@ -11,13 +11,14 @@ import language from 'src/utils/language'
 import { I18nextProvider } from 'react-i18next'
 
 // CSS File Here
-import '../../public/assets/css/fonts/fonts.css'
-import '../../public/assets/css/vendor/animate.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 import 'react-tooltip/dist/react-tooltip.css'
-import '../../public/assets/css/bootstrap.min.css'
-import '../../public/assets/css/style.css'
+import '../assets/css/style.css'
+import '../assets/css/vendor/animate.css'
+import '../assets/css/articles.css'
 import './profile/wallet/wallet-elite.css'
+import '../components/Books/books.css'
 
 
 // ** Configure JSS & ClassName

@@ -6,6 +6,7 @@ import leaderboardIcon from 'src/assets/images/leaderboard.svg'
 import walletIcon from 'src/assets/images/Wallet.svg'
 import inviteIcon from 'src/assets/images/invitedfriend.svg'
 import coinIcon from 'src/assets/images/Coinhistory.svg'
+import { FaBook } from 'react-icons/fa'
 import { t } from "i18next";
 import { useRouter } from "next/router";
 import { sysConfigdata } from "src/store/reducers/settingsSlice";
@@ -123,6 +124,12 @@ const LeftTabProfile = () => {
           <span><img src={coinIcon.src} alt="coin-history" /></span>
           <span>{t('coin_history')}</span>
         </div>
+
+        <div className={`tab-header ${path === '/books/my-books' ? 'active' : ''}`} onClick={() => router.push("/books/my-books")}>
+          <span><FaBook className='profileTabIcon' /></span>
+          <span>{t('my_books')}</span>
+        </div>
+
         {systemconfig?.payment_mode === "1" ?
           <div className={`tab-header ${path === '/profile/wallet' ? 'active' : ''}`} onClick={() => router.push("/profile/wallet")}>
             <span><img src={walletIcon.src} alt="wallet" /></span>

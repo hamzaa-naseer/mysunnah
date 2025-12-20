@@ -16555,3 +16555,211 @@ input[type="checkbox"] {
 .show_score_skeleton .ant-skeleton-paragraph li:is(:nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8)) {
   height: 0px;
 }
+/* Articles Section Styles */
+.articles-section {
+    background: #f8f9fa;
+}
+
+.articles-section .section-title {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.articles-section .section-subtitle {
+    font-size: 1.1rem;
+}
+
+.articles-section .article-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    background: white;
+}
+
+.articles-section .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+}
+
+.articles-section .article-image-wrapper {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.articles-section .article-image {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.articles-section .article-card:hover .article-image {
+    transform: scale(1.05);
+}
+
+.articles-section .article-title {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    min-height: 2.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.articles-section .article-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.articles-section .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.articles-section .cursor-pointer {
+    cursor: pointer;
+}
+
+.articles-section .btn-primary {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.articles-section .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.articles-section .btn-outline-primary {
+    border: 2px solid #667eea;
+    color: #667eea;
+    transition: all 0.3s ease;
+}
+
+.articles-section .btn-outline-primary:hover {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .articles-section .section-title {
+        font-size: 2rem;
+    }
+    
+    .articles-section .article-image-wrapper {
+        height: 180px;
+    }
+}
+
+/* Article Details Page Styles */
+.article-details .article-title {
+    color: #2c3e50;
+    font-weight: 700;
+    line-height: 1.3;
+    font-size: 2.2rem;
+}
+
+.article-details .article-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.article-details .article-meta small {
+    font-size: 0.9rem;
+}
+
+.article-details .article-image-container {
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.article-details .article-image-container img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.article-details .content-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.article-details .content-body h2,
+.article-details .content-body h3,
+.article-details .content-body h4 {
+    color: #2c3e50;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.article-details .content-body p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.article-details .content-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.article-details .content-body blockquote {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+}
+
+.article-details .content-body ul,
+.article-details .content-body ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.article-details .content-body li {
+    margin-bottom: 0.5rem;
+}
+
+/* Articles Page Styles */
+.articles-page .page-title {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.articles-page .page-subtitle {
+    font-size: 1.1rem;
+}
+
+.articles-page .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    border-color: #667eea;
+}
+
+@media (max-width: 768px) {
+    .article-details .article-title {
+        font-size: 1.8rem;
+    }
+    
+    .article-details .article-description {
+        font-size: 1rem;
+    }
+    
+    .article-details .content-body {
+        font-size: 1rem;
+    }
+    
+    .articles-page .page-title {
+        font-size: 2rem;
+    }
+}

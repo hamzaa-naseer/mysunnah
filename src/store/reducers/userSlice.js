@@ -8,7 +8,6 @@ import {
   updateUserProfileImageApi
 } from 'src/utils/api'
 import { apiCallBegan } from '../actions/apiActions'
-import { store } from '../store'
 
 // state
 const initialState = {
@@ -105,6 +104,8 @@ export const register = (
   onError,
   onStart
 ) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(
     apiCallBegan({
       ...SignUpApi(firebase_id, type, username, email, image_url, mobile, fcm_id, friends_code),
@@ -119,6 +120,8 @@ export const register = (
 
 // check user exists
 export const checkUserExist = (firebase_id, onSuccess, onError, onStart) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(
     apiCallBegan({
       ...checkUserExistsApi(firebase_id),
@@ -132,11 +135,15 @@ export const checkUserExist = (firebase_id, onSuccess, onError, onStart) => {
 
 // logout
 export const logout = () => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(logoutSuccess())
 }
 
 // update Image profile
 export const updateProfileApi = (image, onSuccess, onError, onStart) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(
     apiCallBegan({
       ...updateUserProfileImageApi(image),
@@ -151,6 +158,8 @@ export const updateProfileApi = (image, onSuccess, onError, onStart) => {
 
 // update name and mobile
 export const updateProfileDataApi = (email, name, mobile, onSuccess, onError, onStart) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(
     apiCallBegan({
       ...updateUserProfileDataApi(email, name, mobile),
@@ -165,6 +174,8 @@ export const updateProfileDataApi = (email, name, mobile, onSuccess, onError, on
 
 // get user statistics
 export const getUserStatisticsDataApi = (onSuccess, onError, onStart) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(
     apiCallBegan({
       ...getUserStatisticsApi(),
@@ -179,6 +190,8 @@ export const getUserStatisticsDataApi = (onSuccess, onError, onStart) => {
 
 // get user statistics profile
 export const getUserProfilestatisticsApi = (onSuccess, onError, onStart) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(
     apiCallBegan({
       ...getUserProfileApi(),
@@ -193,5 +206,7 @@ export const getUserProfilestatisticsApi = (onSuccess, onError, onStart) => {
 
 // update user data
 export const updateUserDataInfo = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(updateUserDatainfo({ data }))
 }

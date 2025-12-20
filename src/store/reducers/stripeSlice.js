@@ -1,7 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { getStripeSettingsApi } from 'src/utils/api'
 import { apiCallBegan } from '../actions/apiActions'
-import { store } from '../store'
 
 // initial state
 const initialState = {
@@ -56,6 +55,9 @@ export const loadStripeSettings = ({
   onError = () => {},
   onStart = () => {}
 }) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
+  
   const firstLoad = sessionStorage.getItem('firstLoad_Stripe')
   const manualRefresh = sessionStorage.getItem('manualRefresh_Stripe')
 

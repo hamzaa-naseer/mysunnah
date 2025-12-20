@@ -1,6 +1,4 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit"
-import { store } from "../store";
-
 
 const initialState = {
     showScore:false,
@@ -110,16 +108,22 @@ export default groupbattleSlice.reducer;
 
 // load data
 export const LoadGroupBattleData = (key,value) => {
+    // Lazy import to avoid circular dependency
+    const { store } = require("../store")
     store.dispatch(groupbattleSuccess({ key,value }))
 };
 
 // show score data
 export const loadShowScoreData = (data) => {
+    // Lazy import to avoid circular dependency
+    const { store } = require("../store")
     store.dispatch(groupbattleShowScore({data}))
 } 
 
 // data clear after playing in storage
 export const battleDataClear = () => {
+    // Lazy import to avoid circular dependency
+    const { store } = require("../store")
     store.dispatch(groupbattleDataClearSuccess())
 }
 

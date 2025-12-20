@@ -1,5 +1,3 @@
-import { store } from "../store/store";
-
 /** API ROUTES */
 
 // Common Api
@@ -16,6 +14,17 @@ export const GET_GLOBLE_LEADERBOARD = "get_globle_leaderboard";
 
 // Languages Api
 export const GET_LANGUAGES = "get_languages";
+
+// Book Shopping Api
+export const GET_BOOKS = "get_books";
+export const GET_BOOK_BY_ID = "get_book_by_id";
+export const PURCHASE_BOOK = "purchase_book";
+export const GET_PURCHASED_BOOKS = "get_purchased_books";
+export const DOWNLOAD_BOOK = "download_book";
+
+// Articles Api
+export const GET_ARTICLES = "get_articles";
+export const GET_ARTICLE_BY_ID = "get_article_by_id";
 
 // User Api
 export const GET_USER = "get_user_by_id";
@@ -106,6 +115,9 @@ export const GET_NOTIFICATIONS = "get_notifications";
 
 //get language from storage
 const getLanguage = () => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store/store");
+
   let language = store.getState().Languages.currentLanguage
 
   let sysconfig = store.getState().Settings.systemConfig
@@ -952,6 +964,94 @@ export const getStripeSettingsApi = () => {
     url: `${GET_SYSTEM_CONFIGURATIONS}`, // Using existing endpoint as fallback
     method: 'POST',
     data: {},
+    authorizationHeader: false,
+  }
+};
+
+// === BOOK SHOPPING API FUNCTIONS ===
+
+// 62. Get Books - List all active books with pagination and filtering
+export const getBooksApi = (language_id = null, category = null, offset = 0, limit = 10) => {
+  return {
+    url: `${GET_BOOKS}`,
+    method: 'POST',
+    data: {
+      language_id: language_id,
+      category: category,
+      offset: offset,
+      limit: limit,
+    },
+    authorizationHeader: false, // Will be overridden by apiCallWithToken when needed
+  }
+};
+
+// 63. Get Book by ID - Get details of a specific book
+export const getBookByIdApi = (book_id) => {
+  return {
+    url: `${GET_BOOK_BY_ID}`,
+    method: 'POST',
+    data: {
+      book_id: book_id,
+    },
+    authorizationHeader: false, // Will be overridden by apiCallWithToken when needed
+  }
+};
+
+// 64. Purchase Book - Purchase a book using coins
+export const purchaseBookApi = (book_id) => {
+  return {
+    url: `${PURCHASE_BOOK}`,
+    method: 'POST',
+    data: {
+      book_id: book_id,
+    },
+    authorizationHeader: true,
+  }
+};
+
+// 65. Get Purchased Books - List books purchased by authenticated user
+export const getPurchasedBooksApi = (offset = 0, limit = 10) => {
+  return {
+    url: `${GET_PURCHASED_BOOKS}`,
+    method: 'POST',
+    data: {
+      offset: offset,
+      limit: limit,
+    },
+    authorizationHeader: true,
+  }
+};
+
+// 66. Download Book - Get PDF download URL for purchased book
+export const downloadBookApi = (book_id) => {
+  return {
+    url: `${DOWNLOAD_BOOK}`,
+    method: 'POST',
+    data: {
+      book_id: book_id,
+    },
+    authorizationHeader: true,
+  }
+};
+
+// 67. Get Articles - List all active articles
+export const getArticlesApi = () => {
+  return {
+    url: `${GET_ARTICLES}`,
+    method: 'POST',
+    data: {},
+    authorizationHeader: false,
+  }
+};
+
+// 68. Get Article By ID - Get details of a single article
+export const getArticleByIdApi = (id) => {
+  return {
+    url: `${GET_ARTICLE_BY_ID}`,
+    method: 'POST',
+    data: {
+      article_id: id,
+    },
     authorizationHeader: false,
   }
 };

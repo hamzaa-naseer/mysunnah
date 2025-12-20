@@ -1,6 +1,5 @@
-"use client"
 import dynamic from 'next/dynamic'
-const Layout = dynamic(() => import('src/components/Layout/Layout'), { ssr: false })
+import Layout from 'src/components/Layout/Layout'
 const HomeComp = dynamic(() => import('src/components/Static-Pages/HomeComp'), { ssr: false })
 
 const Home = () => {

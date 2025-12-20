@@ -1,5 +1,4 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { store } from '../store'
 
 // Define the initial state
 const initialState = {
@@ -29,11 +28,15 @@ export default badgeSlice.reducer
 
 // load dat a
 export const Loadbadgedata = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(badgeSuccess({ data }))
 }
 
 // load data
 export const LoadNewBadgesData = (key, value) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(badgestatusSuccess({ key, value }))
 }
 

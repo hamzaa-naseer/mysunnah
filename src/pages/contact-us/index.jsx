@@ -6,10 +6,10 @@ import ContactUs from 'src/components/Static-Pages/ContactUs'
 const Contact_us = ({ t }) => {
 
   return (
-    <React.Fragment>
+    <>
       <Meta />
       <ContactUs />
-    </React.Fragment>
+    </>
   )
 }
 export default withTranslation()(Contact_us)

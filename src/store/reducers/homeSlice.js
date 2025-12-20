@@ -2,7 +2,6 @@ import { createSelector, createSlice } from '@reduxjs/toolkit'
 import moment from 'moment'
 import { getHomeWebSettingsApi } from 'src/utils/api'
 import { apiCallBegan } from '../actions/apiActions'
-import { store } from '../store'
 
 const initialState = {
   data: {},
@@ -43,6 +42,8 @@ export default slice.reducer
 
 // API Calls
 export const loadHome = ({ onSuccess = () => {}, onError = () => {}, onStart = () => {} }) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   const state = store.getState()
   const { currentLanguage } = store.getState().Languages
   const { lastFetch, Lang } = state.Home

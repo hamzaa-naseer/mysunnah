@@ -24,6 +24,22 @@ const menu_data = [
     active: ''
   },
   {
+    id: 5,
+    mega_menu: false,
+    has_dropdown: false,
+    title: 'books',
+    link: '/books',
+    active: ''
+  },
+  {
+    id: 6,
+    mega_menu: false,
+    has_dropdown: false,
+    title: 'articles',
+    link: '/articles',
+    active: ''
+  },
+  {
     id: 4,
     mega_menu: false,
     has_dropdown: true,

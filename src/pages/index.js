@@ -1,6 +1,6 @@
 import Meta from 'src/components/SEO/Meta'
 import dynamic from 'next/dynamic'
-const Home = dynamic(() => import('./home'), { ssr: false })
+import Home from './home'
 const Index = () => {
   return (
     <div>

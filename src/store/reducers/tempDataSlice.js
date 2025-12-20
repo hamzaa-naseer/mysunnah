@@ -1,5 +1,4 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { store } from '../store'
 
 const initialState = {
   data: {},
@@ -101,38 +100,56 @@ export const {
 export default tempSlice.reducer
 
 export const Loadtempdata = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(tempdataSuccess({ data }))
 }
 
 export const updateTempdata = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(updateTempdataSuccess({ data }))
 }
 
 export const LoadcontestLeaderboard = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(contestLeaderboarddataSuccess({ data }))
 }
 
 export const playwithFrienddata = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(playwithFrienddataSuccess({ data }))
 }
 
 export const LoadexamCompletedata = (totalQuestions, Correctanswer, InCorrectanswer) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(examcompletedataSuccess({ totalQuestions, Correctanswer, InCorrectanswer }))
 }
 
 export const Loadexamsetquiz = (remianingtimer, statistics, totalmarks) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(examsetquizSuccess({ remianingtimer, statistics, totalmarks }))
 }
 
 export const LoadExamQuestion = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(examquestionsSuccess({ data }))
 }
 
 export const LoadQuizZoneCompletedata = (Correctanswer, InCorrectanswer) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(quizZonecompletedataSuccess({ Correctanswer, InCorrectanswer }))
 }
 
 export const LoadQuizZonepercentage = data => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(quizZonequizShowSucess({ data }))
 }
 

@@ -1,5 +1,4 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { store } from "../store";
 
 const initialState = {
     data: {},
@@ -25,6 +24,8 @@ export default bookmarkSlice.reducer;
 
 // load data
 export const Loadbookmarkdata = (data) => {
+    // Lazy import to avoid circular dependency
+    const { store } = require("../store")
     store.dispatch(bookmarkSuccess({ data}))
 }
 

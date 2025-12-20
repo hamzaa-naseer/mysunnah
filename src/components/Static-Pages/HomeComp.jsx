@@ -6,7 +6,11 @@ import { getAndUpdateBookmarkData, isLogin } from 'src/utils'
 import Features from 'src/components/Home/Features/Features'
 import Process from 'src/components/Home/Process/Process'
 import ChooseUs from 'src/components/Home/WhyChooseUs/ChooseUs'
+import dynamic from 'next/dynamic'
 import { useSelector } from 'react-redux'
+
+const ArticlesSection = dynamic(() => import('src/components/Home/ArticlesSection'), { ssr: false })
+const BooksSection = dynamic(() => import('src/components/Home/BooksSection'), { ssr: false })
 import { selectHome } from 'src/store/reducers/homeSlice'
 import noDataImage from '../../assets/images/no_data_found.svg'
 import { t } from 'i18next'
@@ -34,6 +38,8 @@ const HomeComp = () => {
                     {selectHomeData?.data?.section_3_mode === "1" ?
                         <Process homeSettings={selectHomeData?.data} isLoading={selectHomeData?.loading} />
                         : null}
+                    <BooksSection />
+                    <ArticlesSection />
                     <ScrollToTop />
                 </> :
                     <div className="container no_data_found">

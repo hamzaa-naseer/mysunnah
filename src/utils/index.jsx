@@ -577,3 +577,57 @@ export const reportQuestion = (question_id) => {
         }
     });
 };
+
+// API utility functions for making HTTP requests
+export const apiCall = async (apiConfig) => {
+    const { url, method = 'POST', data = {}, authorizationHeader = false } = apiConfig;
+
+    try {
+        // Get the base URL from environment variables
+        const baseURL = (process.env.NEXT_PUBLIC_BASE_URL + process.env.NEXT_PUBLIC_END_POINT).replace(/"/g, '').trim();
+        const fullURL = `${baseURL}${url}`.replace(/\/+/g, '/').replace(':/', '://');
+
+        console.log('API Call Request:', { fullURL, method, data, authorizationHeader });
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        };
+
+        // Add authorization header if required
+        if (authorizationHeader) {
+            const user = store.getState().User;
+            if (user && user.data && user.data.api_token) {
+                headers['Authorization'] = `Bearer ${user.data.api_token}`;
+            }
+        }
+
+        const response = await fetch(fullURL, {
+            method: method,
+            headers: headers,
+            body: method !== 'GET' ? JSON.stringify(data) : undefined,
+        });
+
+        console.log('API Call Response Status:', response.status);
+
+        const result = await response.json();
+        console.log('API Call Result:', result);
+
+        if (!response.ok) {
+            throw new Error(result.message || 'API request failed');
+        }
+
+        return result;
+    } catch (error) {
+        console.error('API Call Error:', error);
+        return {
+            error: true,
+            message: error.message || 'Network error occurred',
+        };
+    }
+};
+
+// API utility function for authenticated calls
+export const apiCallWithToken = async (apiConfig) => {
+    return apiCall({ ...apiConfig, authorizationHeader: true });
+};

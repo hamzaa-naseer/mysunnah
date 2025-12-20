@@ -1,6 +1,5 @@
 // userCoinsSlice.js
 import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { store } from '../store'
 import { apiCallBegan } from '../actions/apiActions'
 import moment from 'moment'
 import { getUserCoinsApi } from 'src/utils/api'
@@ -37,6 +36,8 @@ export default userCoinsSlice.reducer
 
 // API CALLS
 export const loadUserCoinApi = ({ onSuccess = () => {}, onError = () => {}, onStart = () => {} }) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   const firstLoad = sessionStorage.getItem('firstLoad_Coins')
   const manualRefresh = sessionStorage.getItem('coin_ManualRefresh')
 

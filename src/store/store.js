@@ -40,7 +40,12 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: persistReducer(persistConfig, rootReducer),
-  middleware: [api]
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+      },
+    }).concat(api),
 })
 
 export const persistor = persistStore(store)

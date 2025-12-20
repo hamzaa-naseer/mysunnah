@@ -6,10 +6,10 @@ import PrivacyPolicyComp from 'src/components/Static-Pages/PrivacyPolicy'
 const PrivacyPolicy = ({ t }) => {
 
   return (
-    <React.Fragment>
+    <>
       <Meta />
       <PrivacyPolicyComp />
-    </React.Fragment>
+    </>
   )
 }
 export default withTranslation()(PrivacyPolicy)

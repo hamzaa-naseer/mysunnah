@@ -1,7 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { getWebSettingsApi } from 'src/utils/api'
 import { apiCallBegan } from '../actions/apiActions'
-import { store } from '../store'
 
 // state
 const initialState = {
@@ -11,7 +10,7 @@ const initialState = {
 }
 
 // slice
-export const userSlice = createSlice({
+export const webSettingsSlice = createSlice({
   name: 'WebSettings',
   initialState,
   reducers: {
@@ -30,19 +29,19 @@ export const userSlice = createSlice({
   }
 })
 
-export const { webSettingsRequested, webSettingsSuccess, webSettingsFailed } = userSlice.actions
-export default userSlice.reducer
+export const { webSettingsRequested, webSettingsSuccess, webSettingsFailed } = webSettingsSlice.actions
+export default webSettingsSlice.reducer
 
 // selectors
 export const selectUser = state => state.User
 
 // update name and mobile
-export const LoadWebSettingsDataApi = (onSuccess, onError, onStart) => {
+export const LoadWebSettingsDataApi = (onSuccess, onError, onStart) => (dispatch, getState) => {
   const firstLoad = sessionStorage.getItem('firstLoad_WebSettings_Config')
   const manualRefresh = sessionStorage.getItem('manualRefresh_WebSettings_Config')
   const shouldFetchData = !firstLoad || manualRefresh === 'true'
   if (shouldFetchData) {
-    store.dispatch(
+    dispatch(
       apiCallBegan({
         ...getWebSettingsApi(),
         displayToast: false,
@@ -60,7 +59,7 @@ export const LoadWebSettingsDataApi = (onSuccess, onError, onStart) => {
     // Set firstLoad flag to prevent subsequent calls
     sessionStorage.setItem('firstLoad_WebSettings_Config', 'true')
   } else {
-    onSuccess(store.getState().WebSettings) // Invoke onSuccess with the existing data
+    onSuccess(getState().WebSettings) // Invoke onSuccess with the existing data
   }
 }
 

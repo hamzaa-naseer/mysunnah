@@ -17,22 +17,20 @@ const Header = dynamic(() => import('./Header'), { ssr: false })
 const Footer = dynamic(() => import('./Footer'), { ssr: false })
 // const Notification = dynamic(() => import('../FirebaseNotification/Notification'), { ssr: false })
 
-const Layout = ({ children }) => {
-
+const LayoutContent = ({ children }) => {
   const { i18n } = useTranslation()
-
   const navigate = useRouter()
-
   const [loading, setLoading] = useState(true);
-
   const [redirect, setRedirect] = useState(false)
 
-
+  // Use the actual selectors
   const selectcurrentLanguage = useSelector(selectCurrentLanguage)
-
   const webSettings = useSelector(websettingsData)
+  // const selectcurrentLanguage = { id: 1, code: 'en' }
+  // const webSettings = {}
 
   const dispatch = useDispatch();
+  // const dispatch = () => { }
 
   useEffect(() => {
     loadHome({
@@ -52,14 +50,15 @@ const Layout = ({ children }) => {
 
     settingsLoaded({ type: "" })
 
-    LoadWebSettingsDataApi(
+    dispatch(LoadWebSettingsDataApi(
       () => { setLoading(false); },
       () => { }
-    )
+    ))
 
     systemconfigApi({
       onSuccess: () => { setLoading(false); },
       onError: (error) => {
+        setLoading(false);
         console.log(error)
       }
     })
@@ -109,8 +108,22 @@ const Layout = ({ children }) => {
   }, [redirect])
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--primary-color', webSettings && webSettings?.primary_color ? webSettings && webSettings?.primary_color : "#EF5388FF")
-    document.documentElement.style.setProperty('--secondary-color', webSettings && webSettings?.footer_color ? webSettings?.footer_color : "#090029FF")
+    const primaryColor = webSettings && webSettings?.primary_color ? webSettings?.primary_color : "#EF5388FF";
+    const secondaryColor = webSettings && webSettings?.footer_color ? webSettings?.footer_color : "#090029FF";
+
+    document.documentElement.style.setProperty('--primary-color', primaryColor)
+    document.documentElement.style.setProperty('--secondary-color', secondaryColor)
+
+    // Set RGB values for transparency usage
+    const hexToRgb = (hex) => {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex.substring(0, 7));
+      return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : null;
+    };
+
+    const primaryRgb = hexToRgb(primaryColor);
+    if (primaryRgb) {
+      document.documentElement.style.setProperty('--primary-rgb', primaryRgb);
+    }
   }, [webSettings])
 
   return (
@@ -138,4 +151,25 @@ const Layout = ({ children }) => {
     </>
   )
 }
+
+// Wrapper component that handles the mounting state
+const Layout = ({ children }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render until mounted on client side
+  if (!mounted) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+        <RiseLoader color="#ef5488" size={25} />
+      </div>
+    );
+  }
+
+  return <LayoutContent>{children}</LayoutContent>;
+};
+
 export default Layout

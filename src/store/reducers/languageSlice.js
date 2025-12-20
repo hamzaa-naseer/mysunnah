@@ -2,7 +2,6 @@ import { createSelector, createSlice } from '@reduxjs/toolkit'
 import moment from 'moment'
 import { getLanguagesApi } from 'src/utils/api'
 import { apiCallBegan } from '../actions/apiActions'
-import { store } from '../store'
 
 const initialState = {
   list: [],
@@ -43,6 +42,8 @@ export default slice.reducer
 
 // API Calls
 export const loadLanguages = (id, onSuccess, onError, onStart) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   // const {lastFetch} = store.getState().Languages;
   // const diffInMinutes = moment().diff(moment(lastFetch), 'minutes');
   // // If API data is fetched within last 10 minutes then don't call the API again
@@ -62,6 +63,8 @@ export const loadLanguages = (id, onSuccess, onError, onStart) => {
 }
 
 export const setCurrentLanguage = (name, code, id) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
   store.dispatch(languageChanged({ name, code, id }))
 }
 

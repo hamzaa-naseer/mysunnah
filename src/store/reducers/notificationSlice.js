@@ -1,5 +1,4 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { store } from '../store'
 import { getNotificationsApi } from 'src/utils/api'
 import { apiCallBegan } from '../actions/apiActions'
 
@@ -48,6 +47,8 @@ export const loadNotification = ({
   onError = () => {},
   onStart = () => {}
 }) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require("../store")
   store.dispatch(
     apiCallBegan({
       ...getNotificationsApi(id, order, offset, limit),

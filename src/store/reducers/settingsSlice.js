@@ -1,7 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { getSettingsApi, getSystemConfigurationsApi } from 'src/utils/api'
 import { apiCallBegan } from '../actions/apiActions'
-import { store } from '../store'
 import moment from 'moment'
 
 // initial state
@@ -47,6 +46,9 @@ export default settingsSlice.reducer
 
 // API Callls
 export const settingsLoaded = ({ type = '', onSuccess = () => {}, onError = () => {}, onStart = () => {} }) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
+  
   const { lastFetch } = store.getState().Settings
   const diffInMinutes = moment().diff(moment(lastFetch), 'minutes')
   const firstLoad = sessionStorage.getItem('firstLoad_Settings')
@@ -92,6 +94,9 @@ if (typeof window !== 'undefined') {
 }
 
 export const systemconfigApi = ({ onSuccess = () => {}, onError = () => {}, onStart = () => {} }) => {
+  // Lazy import to avoid circular dependency
+  const { store } = require('../store')
+  
   const firstLoad = sessionStorage.getItem('firstLoad_Settings_Config')
   const manualRefresh = sessionStorage.getItem('manualRefresh_Settings_Config')
 

@@ -31,6 +31,16 @@ const NavBar = ({ t }) => {
             <span className='menu-text'>{t('instruction')}</span>
           </Link>
         </li>
+        <li>
+          <Link href='/books' className={isActive('/books') ? 'navbar__link--active' : ''}>
+            <span className='menu-text'>{t('books')}</span>
+          </Link>
+        </li>
+        <li>
+          <Link href='/articles' className={isActive('/articles') ? 'navbar__link--active' : ''}>
+            <span className='menu-text'>{t('articles')}</span>
+          </Link>
+        </li>
         <li className='has-children'>
           <Link href=''>
             <span className='menu-text'>{t('more')} <Image src={dropdownIcon} alt="Dropdown Icon" width={10} height={10} /> </span>

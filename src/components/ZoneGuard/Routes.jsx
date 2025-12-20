@@ -9,7 +9,7 @@ import { authRoutes, protectedRoutes } from "src/routes/routes";
 
 const Routes = ({ children }) => {
 
-    const userData = useSelector(state => state.User)
+    const userData = useSelector(state => state.User || {})
 
     // Check if the user is authenticated based on the presence of the token
     const isAuthenticated = userData.token
@@ -21,7 +21,7 @@ const Routes = ({ children }) => {
     // Check if the given pathname matches any of the patterns
     const isRouteProtected = (pathname) => {
         return pathname && protectedRoutes.some(pattern => pathname.startsWith(pattern));
-      };
+    };
 
     // Check if the current route requires authentication
     // const requiresAuth = protectedRoutes.includes(pathname)
@@ -29,7 +29,7 @@ const Routes = ({ children }) => {
 
     useEffect(() => {
         authCheck()
-    }, [requiresAuth,pathname])
+    }, [requiresAuth, pathname])
 
     const authCheck = () => {
         if (requiresAuth) {

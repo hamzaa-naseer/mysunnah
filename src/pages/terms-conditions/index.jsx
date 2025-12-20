@@ -6,10 +6,10 @@ import TermsAndConditions from 'src/components/Static-Pages/TermsAndConditions'
 const TermAndConditions = ({ t }) => {
 
   return (
-    <React.Fragment>
+    <>
       <Meta />
       <TermsAndConditions />
-    </React.Fragment>
+    </>
   )
 }
 export default withTranslation()(TermAndConditions)
