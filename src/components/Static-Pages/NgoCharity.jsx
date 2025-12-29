@@ -24,7 +24,8 @@ const NgoCharity = ({ t }) => {
             description: "Empowering young people to take control of their lives and future.",
             target: "£50,000",
             raised: "£12,500",
-            link: "https://www.impetus.org.uk/portfolio-partners/imo-charity?gad_source=1&gad_campaignid=22609491245&gbraid=0AAAAADmSRPWKGbsS6E_ikXH4Wlr08KBfW&gclid=CjwKCAiA9aPKBhBhEiwAyz82J1Vx3eCjkSyNL50euxHTc-CwetuLxWb1U8_67l5rxURtN-y-tlZCQhoCHkYQAvD_BwE"
+            link: "https://www.impetus.org.uk/portfolio-partners/imo-charity?gad_source=1&gad_campaignid=22609491245&gbraid=0AAAAADmSRPWKGbsS6E_ikXH4Wlr08KBfW&gclid=CjwKCAiA9aPKBhBhEiwAyz82J1Vx3eCjkSyNL50euxHTc-CwetuLxWb1U8_67l5rxURtN-y-tlZCQhoCHkYQAvD_BwE",
+            image: require('src/assets/images/imo_logo.png')
         },
         {
             id: 2,
@@ -32,7 +33,8 @@ const NgoCharity = ({ t }) => {
             description: "National Alliance of Women's Organisations - working for gender equality.",
             target: "£75,000",
             raised: "£45,000",
-            link: "https://nawo.org.uk/"
+            link: "https://nawo.org.uk/",
+            image: require('src/assets/images/nawo_logo.jpg')
         },
         {
             id: 3,
@@ -40,7 +42,8 @@ const NgoCharity = ({ t }) => {
             description: "Providing love, care, and education to orphaned and vulnerable children.",
             target: "£100,000",
             raised: "£30,000",
-            link: "https://www.upendokids.org/?gad_source=1&gad_campaignid=21858623223&gbraid=0AAAAADEh7fy5hCSgBBi1JAV2rdzqIFuX7&gclid=CjwKCAiA9aPKBhBhEiwAyz82J2AB-jK4wWJSkJjBJAT43yVNEiytImPf5Z3Lbzy2dc7wJQDSv0CXyxoCtvkQAvD_BwE"
+            link: "https://www.upendokids.org/?gad_source=1&gad_campaignid=21858623223&gbraid=0AAAAADEh7fy5hCSgBBi1JAV2rdzqIFuX7&gclid=CjwKCAiA9aPKBhBhEiwAyz82J2AB-jK4wWJSkJjBJAT43yVNEiytImPf5Z3Lbzy2dc7wJQDSv0CXyxoCtvkQAvD_BwE",
+            image: require('src/assets/images/upendo_logo.png')
         },
         {
             id: 4,
@@ -49,6 +52,7 @@ const NgoCharity = ({ t }) => {
             target: "£200,000",
             raised: "£150,000",
             link: "https://www.redcross.org.uk/"
+            // No specific image, will fallback to default
         },
         {
             id: 5,
@@ -57,6 +61,7 @@ const NgoCharity = ({ t }) => {
             target: "£500,000",
             raised: "£320,000",
             link: "https://www.bhf.org.uk/"
+            // No specific image, will fallback to default
         }
     ]
 
@@ -118,16 +123,17 @@ const NgoCharity = ({ t }) => {
                         {usCampaigns.map(campaign => (
                             <div key={campaign.id} className="col-lg-4 col-md-6 mb-4">
                                 <div className="card h-100 bg-white border-0 text-dark shadow-sm hover-lift" style={{ transition: 'transform 0.3s ease, box-shadow 0.3s ease' }}>
-                                    {/* Premium Charity Card Header Image */}
-                                    <div className="card-img-top position-relative" style={{ height: '240px', overflow: 'hidden' }}>
-                                        <Image
-                                            src={require('src/assets/images/charity_card_bg.png')}
-                                            alt={campaign.title}
-                                            layout="fill"
-                                            objectFit="cover"
-                                            className="transition-transform duration-500 hover:scale-110"
-                                        />
-                                        <div className="position-absolute w-100 h-100" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%)' }}></div>
+                                    {/* Charity Logo Image or Default Fallback */}
+                                    <div className="card-img-top position-relative d-flex align-items-center justify-content-center p-0 bg-light" style={{ height: '240px', overflow: 'hidden' }}>
+                                        <div className="position-relative w-100 h-100">
+                                            <Image
+                                                src={campaign.image || require('src/assets/images/charity_card_bg.png')}
+                                                alt={campaign.title}
+                                                layout="fill"
+                                                objectFit={campaign.image ? "contain" : "cover"}
+                                                className={`transition-transform duration-500 hover:scale-110 ${campaign.image ? "p-4" : ""}`}
+                                            />
+                                        </div>
                                     </div>
                                     <div className="card-body p-4 d-flex flex-column">
                                         <h4 className="card-title fw-bold mb-3">{campaign.title}</h4>
