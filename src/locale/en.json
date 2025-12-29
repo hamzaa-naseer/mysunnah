@@ -517,5 +517,9 @@
   "zoom_in": "Zoom In",
   "reset_zoom": "Reset Zoom",
   "fullscreen": "Fullscreen",
-  "exit_fullscreen": "Exit Fullscreen"
+  "exit_fullscreen": "Exit Fullscreen",
+  "ngo_charity": "NGO Charity",
+  "donate": "Donate",
+  "our_mission": "Our Mission",
+  "charity_mission_desc": "Dedicated to serving humanity and spreading kindness through charitable initiatives."
 }

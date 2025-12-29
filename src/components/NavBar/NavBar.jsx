@@ -62,6 +62,11 @@ const NavBar = ({ t }) => {
               </Link>
             </li>
             <li>
+              <Link href='/ngo-charity' className={isActive('/ngo-charity') ? 'navbar__link--active' : ''}>
+                <span className='menu-text'>{t('ngo_charity')}</span>
+              </Link>
+            </li>
+            <li>
               <Link href='/terms-conditions' className={isActive('/terms-conditions') ? 'navbar__link--active' : ''}>
                 <span className='menu-text'>{t('t&c')}</span>
               </Link>
