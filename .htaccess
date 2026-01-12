@@ -109,6 +109,17 @@
     RewriteRule ^quiz-play/true-and-false-play/result$ /quiz-play/true-and-false-play/result/index.html [L]
     RewriteRule ^quiz-play/true-and-false-play/review-answer$ /quiz-play/true-and-false-play/review-answer/index.html [L]
    
+    #books
+    RewriteRule ^books/$ /books/index.html [L]
+    RewriteRule ^books/my-books/$ /books/my-books/index.html [L]
+    RewriteRule ^books/([^/]+)/$ /books/[id]/index.html [L]
+    RewriteRule ^books/view/([^/]+)/$ /books/view/[id]/index.html [L]
+    RewriteRule ^books/download/([^/]+)/$ /books/download/[id]/index.html [L]
+
+    #articles
+    RewriteRule ^articles/$ /articles/index.html [L]
+    RewriteRule ^articles/([^/]+)/$ /articles/[id]/index.html [L]
+   
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ /404/index.html [L]
