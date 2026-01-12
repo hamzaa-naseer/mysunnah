@@ -126,7 +126,7 @@ const SignUp = () => {
           () => {
             setLoading(false);
             toast.success(t('successfully_login'));
-            router.push('/quiz-play');
+            router.push('/');
           },
           () => {
             if (error === "126") {

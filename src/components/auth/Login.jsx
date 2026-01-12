@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useRef,} from 'react'
+import React, { useState, useRef, } from 'react'
 import { FaLock, FaMobileAlt } from 'react-icons/fa'
 import { HiOutlineMail } from "react-icons/hi";
 import { FcGoogle } from 'react-icons/fc'
@@ -48,7 +48,7 @@ const Login = () => {
 
     const router = useRouter()
 
-    const systemconfig = useSelector(sysConfigdata)  
+    const systemconfig = useSelector(sysConfigdata)
     // signin
     const signin = async (email, password) => {
         try {
@@ -95,16 +95,16 @@ const Login = () => {
                                     //If new User then show the Update Profile Screen
                                     setNewUserScreen(true)
                                 } else {
-                                    router.push('/quiz-play')
+                                    router.push('/')
                                 }
                             },
                             error => {
                                 if (error === "126") {
                                     toast.error(t("ac_deactive"));
-                                }else{
+                                } else {
                                     toast.error(`${t('Please ')}${t('try_again')}`);
-                                    console.log("signin handleSignin" ,error);
-                                    
+                                    console.log("signin handleSignin", error);
+
                                 }
                             }
                         )
@@ -164,16 +164,16 @@ const Login = () => {
                     if (isNewUser) {
                         setNewUserScreen(true); // If new User, show the Update Profile Screen
                     } else {
-                        router.push('/quiz-play');
+                        router.push('/');
                     }
                 },
                 (error) => {
-                  if (error === "126") {
+                    if (error === "126") {
                         toast.error(t("ac_deactive"));
-                    }else{
+                    } else {
                         toast.error(`${t('Please ')}${t('try_again')}`);
-                        console.log("logIn signInWithGoogle" , error);
-                        
+                        console.log("logIn signInWithGoogle", error);
+
                     }
                 }
             );
@@ -242,7 +242,7 @@ const Login = () => {
                                                     required={true}
                                                 />
                                                 <span className='emailicon'>
-                                                <HiOutlineMail />
+                                                    <HiOutlineMail />
                                                 </span>
                                             </Form.Group>
                                             <Form.Group className='position-relative d-inline-block w-100' controlId='formBasicPassword'>
@@ -270,15 +270,15 @@ const Login = () => {
                                             </Button>
                                         </Form>}
                                     {(systemconfig.email_login === '0' && systemconfig.gmail_login === '0' && (systemconfig.phone_login === '1'))
-                                    || (systemconfig.email_login === '0' && systemconfig.gmail_login === '1' && systemconfig.phone_login === '0') ? '':
+                                        || (systemconfig.email_login === '0' && systemconfig.gmail_login === '1' && systemconfig.phone_login === '0') ? '' :
                                         <p className='text-center'>
-                                        {t('dont_have_acc')}&nbsp;
-                                        <span>
-                                            <Link href='/auth/sign-up' replace className='text-dark auth-signup'>
-                                                {t('sign_up')}
-                                            </Link>
-                                        </span>
-                                    </p>}
+                                            {t('dont_have_acc')}&nbsp;
+                                            <span>
+                                                <Link href='/auth/sign-up' replace className='text-dark auth-signup'>
+                                                    {t('sign_up')}
+                                                </Link>
+                                            </span>
+                                        </p>}
                                 </div>
                             </div>
                         </div>

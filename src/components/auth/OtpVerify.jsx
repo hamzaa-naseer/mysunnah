@@ -196,16 +196,16 @@ const OtpVerify = () => {
                                 //If new User then show the Update Profile Screen
                                 setNewUserScreen(true)
                             } else {
-                                router.push('/quiz-play')
+                                router.push('/')
                             }
                         },
                         error => {
                             if (error === "126") {
                                 toast.error(t("ac_deactive"));
-                            }else{
+                            } else {
                                 toast.error(`${t('Please ')}${t('try_again')}`);
-                                console.log("handleVerifyCode" ,error);
-                                
+                                console.log("handleVerifyCode", error);
+
                             }
                         }
                     )
