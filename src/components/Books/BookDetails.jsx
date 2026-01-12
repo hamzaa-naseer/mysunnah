@@ -13,7 +13,8 @@ import {
     FaTag,
     FaSpinner,
     FaCheckCircle,
-    FaShoppingCart
+    FaShoppingCart,
+    FaEye
 } from 'react-icons/fa';
 import { withTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
