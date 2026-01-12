@@ -16,7 +16,7 @@ import { withTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
-import { getBookByIdApi } from '../../utils/api';
+import { getBookByIdApi, downloadBookApi } from '../../utils/api';
 import { apiCallWithToken } from '../../utils/index';
 import Meta from '../SEO/Meta';
 
@@ -63,8 +63,22 @@ const BookView = ({ t }) => {
 
                 setBook(bookData);
 
-                // Set PDF URL with authentication
-                setPdfUrl(`/api/books/pdf/${id}?token=${userToken}`);
+                // Now get the actual PDF URL from the download API instead of local proxy
+                const downloadResponse = await apiCallWithToken(downloadBookApi(id));
+
+                if (!downloadResponse.error && downloadResponse.pdf_url) {
+                    let directPdfUrl = downloadResponse.pdf_url;
+
+                    // Handle relative URLs if any
+                    if (!directPdfUrl.startsWith('http')) {
+                        const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || '').replace(/"/g, '').trim();
+                        directPdfUrl = `${baseUrl}/${directPdfUrl}`.replace(/\/+/g, '/').replace(':/', '://');
+                    }
+
+                    setPdfUrl(directPdfUrl);
+                } else {
+                    toast.error(downloadResponse.message || t('failed_to_get_pdf_url'));
+                }
 
             } else {
                 toast.error(response.message || t('book_not_found'));
