@@ -29,6 +29,8 @@ const HomeComp = () => {
             {
                 selectHomeData.data !== '102' ? <>
                     <IntroSlider homeSettings={selectHomeData?.data} isLoading={selectHomeData?.loading} />
+                    <BooksSection />
+                    <ArticlesSection />
                     {selectHomeData?.data?.section_1_mode === "1" ?
                         <ChooseUs homeSettings={selectHomeData?.data} isLoading={selectHomeData?.loading} />
                         : null}
@@ -38,8 +40,6 @@ const HomeComp = () => {
                     {selectHomeData?.data?.section_3_mode === "1" ?
                         <Process homeSettings={selectHomeData?.data} isLoading={selectHomeData?.loading} />
                         : null}
-                    <BooksSection />
-                    <ArticlesSection />
                     <ScrollToTop />
                 </> :
                     <div className="container no_data_found">
